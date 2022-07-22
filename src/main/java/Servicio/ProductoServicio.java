@@ -21,7 +21,7 @@ import java.util.logging.Logger;
 
 public class ProductoServicio implements IProductoServicio
 {
-    private List<Producto> listPartido;
+    private List<Producto> listProducto;
     private String folder;
     public ProductoServicio() throws IOException
     {
@@ -58,7 +58,7 @@ public class ProductoServicio implements IProductoServicio
         {
             throw new RuntimeException("Ya existe este código.");
         }
-        return partido;        
+        return producto;        
     }
 
     @Override

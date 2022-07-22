@@ -2,6 +2,7 @@
 package Servicio;
 
 import Modelo.Factura;
+import Modelo.Producto;
 import java.io.DataInputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -16,19 +17,17 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
-import modelo.Cliente;
-import modelo.Factura;
 
 
 public class FacturaServicio implements IFacturaServicio {
-    private List<Factura> listJugador;
+    private List<Factura> listFactura;
     private String folder;
     
     public FacturaServicio() throws IOException
     {
         folder = "C:/Equipo";
-        listJugador= new ArrayList<>();
-        listJugador = listar();
+        listFactura= new ArrayList<>();
+        listFactura = listar();
 
     }
 
@@ -47,7 +46,7 @@ public class FacturaServicio implements IFacturaServicio {
                 } catch (IOException e) {
                     archivo.close();
                 }
-                this.listJugador = listar();
+                this.listFactura = listar();
                 return factura;
             }
             else
@@ -114,14 +113,14 @@ public class FacturaServicio implements IFacturaServicio {
         Path path = Paths.get(file_name);
         try {
             Files.delete(path);
-            for (int i = 0; i < listJugador.size(); i++)
+            for (int i = 0; i < listFactura.size(); i++)
             {
-            crear(listJugador.get(i));
+            crear(listFactura.get(i));
             }
         } catch (IOException e) {
             e.printStackTrace();
         }
-        listJugador = listar();        
+        listFactura = listar();        
     }
 
      @Override
@@ -170,5 +169,10 @@ public class FacturaServicio implements IFacturaServicio {
             }            
         }
         return result;
+    }
+
+    @Override
+    public Factura modificar(int numeroNuevo, Producto producto) {
+        throw new UnsupportedOperationException("Not supported yet."); // Generated from nbfs://nbhost/SystemFileSystem/Templates/Classes/Code/GeneratedMethodBody
     }
 }

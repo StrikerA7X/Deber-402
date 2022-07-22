@@ -36,7 +36,7 @@ public class ClienteServicio implements IClienteServicio {
         listCliente = listar();        
     }
     @Override
-    public Cliente crear(Cliente equipo) {
+    public Cliente crear(Cliente cliente) {
         try {
             if (exist(cliente.getCodigo(), cliente.getNombre()) == false)
             {
