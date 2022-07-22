@@ -6,6 +6,7 @@ package Controlador;
 
 import Modelo.Cliente;
 import Servicio.ClienteServicio;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -26,15 +27,15 @@ public class ClienteControl {
         return this.clienteServicio.buscarPorCedula(convertirEntero(arg));
     }
     
-    public Cliente eliminar(String arg){
+    public Cliente eliminar(String arg) throws IOException{
         return this.clienteServicio.eliminar(convertirEntero(arg));
     }
-    public Cliente modificar(String []args){
+    public Cliente modificar(String []args) throws IOException{
         Cliente clienteNuevo = new Cliente(Integer.valueOf(args[0]), args [1], args[2], args[3], Integer.valueOf(args[4]), args[5]);
         this.clienteServicio.modificar(convertirEntero(args[0]), clienteNuevo);
         return clienteNuevo;
     }
-    public List<Cliente> listar(){
+    public List<Cliente> listar() throws IOException{
         return this.clienteServicio.listar();
     }
     private int convertirEntero(String numero){

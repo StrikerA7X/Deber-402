@@ -8,6 +8,7 @@ import Modelo.Factura;
 import Modelo.Producto;
 import Servicio.FacturaServicio;
 import Servicio.ProductoServicio;
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -29,7 +30,7 @@ public class ProductoControl {
         return this.productoServicio.buscarPorCodigo(convertirEntero(arg));
         
     }
-    public Producto eliminar(String arg){
+    public Producto eliminar(String arg) throws IOException{
         return this.productoServicio.eliminar(convertirEntero(arg));
     }
     public Producto modificarProducto(String[]args){
@@ -38,7 +39,7 @@ public class ProductoControl {
         this.productoServicio.crear(productoNuevo);
         return productoNuevo;
     }
-    public List<Producto> listar(){
+    public List<Producto> listar() throws IOException{
         return this.productoServicio.listar();
     }
     private int convertirEntero(String numero){
